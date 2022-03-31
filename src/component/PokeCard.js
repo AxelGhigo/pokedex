@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, Button, Table } from 'react-bootstrap';
+import { Card, Table } from 'react-bootstrap';
 
 const PokeCard = ({ id, name, type, base }) => {
     let link = window.location.origin + `/images/${id}.png`;
@@ -9,7 +9,7 @@ const PokeCard = ({ id, name, type, base }) => {
         link = window.location.origin + `/images/0${id}.png`;
     }
     return (
-        <Card style={{ maxWidth: '10rem' }}>
+        <Card style={{ maxWidth: '11rem' }}>
             <Card.Img variant="top" src={link} />
             <Card.Body>
                 <Card.Title>{name}</Card.Title>
@@ -30,11 +30,11 @@ const PokeCard = ({ id, name, type, base }) => {
                             </tr>
                             <tr>
                                 <td>Sp. Attack</td>
-                                <td>{base["Sp. Attack"]}</td>
+                                <td>{base.spAttack}</td>
                             </tr>
                             <tr>
                                 <td>Sp. Defense</td>
-                                <td>{base["Sp. Defense"]}</td>
+                                <td>{base.spDefense}</td>
                             </tr>
                             <tr>
                                 <td>Speed</td>
