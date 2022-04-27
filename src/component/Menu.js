@@ -1,13 +1,25 @@
 import React from 'react'
 import {
-    Navbar, Container, NavDropdown, Form, FormControl, Nav
+    Navbar, Container, NavDropdown, Form, FormControl, Nav, ToggleButton, ToggleButtonGroup, ButtonGroup
 } from 'react-bootstrap'
+import { useState } from 'react';
 
 const Menu = ({ menuToCard, result }) => {
+
     return (
         <Navbar style={{ backdropFilter: "blur(6px)" }} expand="lg" sticky="top" >
             <Container fluid>
                 <Navbar.Brand href="#">Pokedex</Navbar.Brand>
+                <Form className="d-flex" >
+                    <FormControl
+                        style={{ maxWidth: '18rem' }}
+                        type="search"
+                        placeholder="Search"
+                        className="me-2"
+                        aria-label="Search"
+                        onChange={result} name="search"
+                    />
+                </Form>
                 <Navbar.Toggle aria-controls="navbarScroll" />
                 <Navbar.Collapse id="navbarScroll">
                     <Nav
@@ -15,17 +27,16 @@ const Menu = ({ menuToCard, result }) => {
                         style={{ maxHeight: '150px' }}
                         navbarScroll
                         eventKey={menuToCard}
-                        onSelect={(event, eventKey) => menuToCard(event)}
+                        onSelect={(eventkey) => menuToCard(eventkey)}
                     >
-                        <Nav.Link>Home</Nav.Link>
                         <NavDropdown title="Lingua" style={{ maxWidth: '10rem' }}>
                             <NavDropdown.Item eventKey={"english"} >english</NavDropdown.Item>
                             <NavDropdown.Item eventKey={"japanese"}>japanese</NavDropdown.Item>
                             <NavDropdown.Item eventKey={"chinese"} >chinese</NavDropdown.Item>
                             <NavDropdown.Item eventKey={"french"}  >french</NavDropdown.Item>
                         </NavDropdown>
-                        <NavDropdown title="Ricerca per statistiche" >
-                            <tbody className=" text-center">
+                        <NavDropdown title="Ricerca per statistiche base" style={{ maxWidth: '25rem' }}>
+                            <tbody className=" text-center" style={{ padding: '5rem' }}>
                                 <tr>
                                     <td >HP</td>
                                     <td><FormControl onChange={result} name="HP" /></td>
@@ -47,16 +58,6 @@ const Menu = ({ menuToCard, result }) => {
                             </tbody>
                         </NavDropdown>
                     </Nav>
-                    <Form className="d-flex" >
-                        <FormControl
-                            style={{ maxWidth: '18rem' }}
-                            type="search"
-                            placeholder="Search"
-                            className="me-2"
-                            aria-label="Search"
-                            onChange={result} name="search"
-                        />
-                    </Form>
                 </Navbar.Collapse>
             </Container>
         </Navbar >

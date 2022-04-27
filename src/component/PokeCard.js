@@ -3,11 +3,12 @@ import { Card, Table } from 'react-bootstrap';
 
 const PokeCard = ({ id, name, type, base }) => {
     let link = window.location.origin + `/images/${id}.png`;
-    if (parseInt(id) <= 9) {
+    if (id <= 9) {
         link = window.location.origin + `/images/00${id}.png`;
-    } else if (parseInt(id) > 9 && id <= 99) {
+    } else if (id > 9 && id <= 99) {
         link = window.location.origin + `/images/0${id}.png`;
     }
+
     return (
         <Card style={{ maxWidth: '11rem' }}>
             <Card.Img variant="top" src={link} />
